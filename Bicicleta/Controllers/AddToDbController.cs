@@ -12,20 +12,25 @@ namespace Bicicleta.Controllers
     {
         private readonly string connectionString = "server=localhost;database=bicicleta;user=root;password=''";
 
-        [HttpPost]
-        public IActionResult Post([FromBody] string name)
+        public class AddModel
         {
-            try
-            {
-                int score = Values.score;
+            public string? Name { get; set; }
+        }
 
+
+        [HttpPost]
+        public IActionResult Post([FromBody] AddModel Data)
+        {
+            //Values.Name = Data.Name;
+            try
+            { 
                 using var connection = new MySqlConnection(connectionString);
                 connection.Open();
 
                 string query = "INSERT INTO scores (name, score) VALUES (@name, @score)";
                 using var cmd = new MySqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@name", name);
-                cmd.Parameters.AddWithValue("@score", score);
+                cmd.Parameters.AddWithValue("@name", Data.Name);
+                cmd.Parameters.AddWithValue("@score", Values.Score);
                 cmd.ExecuteNonQuery();
 
                 connection.Close();

@@ -8,17 +8,23 @@ namespace Bicicleta.Controllers
     [ApiController]
     public class GetScoreController : ControllerBase
     {
+
+        public class ScoreModel
+        {
+            public int Score { get; set; }
+        }
+
         [HttpPost]
-        public IActionResult Post([FromBody] int score)
+        public IActionResult GetScore([FromBody] ScoreModel data)
         {   
-            Values.score = score;
-            return Ok(Values.score);
+            Values.Score = data.Score;
+            return Ok(data.Score);
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult ShowScore()
         {
-            return Ok(Values.score);
+            return Ok(new {score = Values.Score});
         }
     }
 

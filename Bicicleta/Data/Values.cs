@@ -2,6 +2,7 @@
 {
     public static class Values
     {
-        public static int score;
+        public static int Score;
+        public static string? Name = "rlk";
     }
 }
