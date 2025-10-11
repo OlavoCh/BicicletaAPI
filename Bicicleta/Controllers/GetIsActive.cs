@@ -8,7 +8,7 @@ namespace Bicicleta.Controllers
     [ApiController]
     public class GetIsActive : ControllerBase
     {
-        private static string? _IsCycling { get; set; }
+        private static bool _IsCycling { get; set; }
         private static bool _isActive;
         [HttpPut("InGame")]
        public IActionResult UpdateStatus([FromBody] bool active)
@@ -24,7 +24,7 @@ namespace Bicicleta.Controllers
         }
 
         [HttpPost("InCycling")]
-        public IActionResult Cycling([FromBody] string Cycling)
+        public IActionResult Cycling([FromBody] bool Cycling)
         {
             _IsCycling = Cycling;
             return Ok();
