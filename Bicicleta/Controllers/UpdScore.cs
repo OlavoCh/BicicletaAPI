@@ -18,6 +18,7 @@ namespace Bicicleta.Controllers
 
         public class UpdModel { 
             public string? Name { get; set; }
+            public int score { get; set; }
         }
 
 
@@ -33,7 +34,7 @@ namespace Bicicleta.Controllers
 
                 string query = "UPDATE scores SET score = @score WHERE name = @name";
                 using var cmd = new MySqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@score", Values.Score);
+                cmd.Parameters.AddWithValue("@score", Data.score);
                 cmd.Parameters.AddWithValue("@name", Data.Name);
 
                 int rowsAffected = cmd.ExecuteNonQuery();
