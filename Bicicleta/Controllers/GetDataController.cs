@@ -31,7 +31,7 @@ namespace Bicicleta.Controllers
             using var connection = new MySqlConnection(connectionString);
             connection.Open();
 
-            string query = "SELECT name, score, ROW_NUMBER() OVER (ORDER BY score DESC) AS posicao FROM scores;";
+            string query = "SELECT name, score, ROW_NUMBER() OVER (ORDER BY score DESC) AS posicao FROM scores LIMIT 10;";
             using var cmd = new MySqlCommand(query, connection);
             using var reader = cmd.ExecuteReader();
 
