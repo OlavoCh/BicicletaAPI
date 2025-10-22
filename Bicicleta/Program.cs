@@ -7,7 +7,7 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.PropertyNamingPolicy = null;
     });
 
-// Libera CORS para qualquer origem (Live Server incluído)
+// Libera CORS para qualquer origem (Live Server incluï¿½do)
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -32,7 +32,7 @@ if (app.Environment.IsDevelopment())
 // Libera CORS antes de qualquer controller
 app.UseCors("AllowAll");
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 

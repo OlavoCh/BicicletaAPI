@@ -15,7 +15,8 @@ namespace Bicicleta.Controllers
 
     public class GetDataController : ControllerBase
     {
-        private readonly string connectionString = "server=localhost;database=bicicleta;user=root;password=''";
+        private readonly string connectionString = "Server=localhost;Database=bicicleta;User=root;Password=12345678;";
+
         public class PlayerScore
         {
             public string? Name { get; set; }

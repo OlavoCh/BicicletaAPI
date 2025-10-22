@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Bicicleta.Data;
+using Microsoft.Extensions.Options;
+using Mysqlx;
 
 namespace Bicicleta.Controllers
 {
@@ -8,32 +10,22 @@ namespace Bicicleta.Controllers
     [ApiController]
     public class GetIsActive : ControllerBase
     {
-        private static bool _IsCycling { get; set; }
-        private static bool _isActive;
-        [HttpPut("InGame")]
-       public IActionResult UpdateStatus([FromBody] bool active)
-        {
-            _isActive = active;
-
-            return Ok();
-        }
 
         [HttpGet("InGame")]
-        public IActionResult ReturnActive() {
-            return Ok(new {isActive = _isActive });
+        public IActionResult ReturnActive()
+        {
+            if (Values.TextString == "c")
+            {
+                return Ok(new { isActive = Values.TextString });
+            }
+            else if (Values.TextString == "d"){
+                return Ok(new { isActive = Values.TextString });
+             }
+            else
+            {
+                return BadRequest(new { Error = "erro" });
+            }
         }
 
-        [HttpPost("InCycling")]
-        public IActionResult Cycling([FromBody] bool Cycling)
-        {
-            _IsCycling = Cycling;
-            return Ok();
-        }
-
-        [HttpGet("InCycling")]
-        public IActionResult GetCycling()
-        {
-            return Ok(new {isCycling = _IsCycling });
-        }
     }
 }

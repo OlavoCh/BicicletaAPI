@@ -14,7 +14,7 @@ namespace Bicicleta.Controllers
     public class UpdScore : ControllerBase
 
     {
-        private readonly string connectionString = "server=localhost;database=bicicleta;user=root;password=''";
+        private readonly string connectionString = "Server=localhost;Database=bicicleta;User=root;Password=12345678;";
 
         public class UpdModel { 
             public string? Name { get; set; }

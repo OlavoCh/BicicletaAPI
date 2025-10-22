@@ -3,6 +3,6 @@
     public static class Values
     {
         public static int Score;
-        public static string? Name = "rlk";
+        public static string? TextString;
     }
 }

@@ -8,7 +8,7 @@ namespace Bicicleta.Controllers
     [ApiController]
     public class GetPosNameController : ControllerBase
     {
-        private readonly string connectionString = "server=localhost;database=bicicleta;user=root;password=''";
+        private readonly string connectionString = "Server=localhost;Database=bicicleta;User=root;Password=12345678;";
 
         // O modelo de dados pode ser o mesmo, mas vamos manter a consistência
         // com o que o frontend espera (Name, Score, Posicao com letra maiúscula)

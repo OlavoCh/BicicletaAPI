@@ -11,20 +11,32 @@ namespace Bicicleta.Controllers
 
         public class ScoreModel
         {
-            public int Score { get; set; }
+            public string? Values { get; set; }
         }
 
         [HttpPost]
         public IActionResult GetScore([FromBody] ScoreModel data)
-        {   
-            Values.Score = data.Score;
-            return Ok(data.Score);
+        {
+            char[] delimiter = [','];
+            string? text = data.Values;
+
+            string[] finaltext = text.Split(delimiter);
+
+
+            int num = int.Parse(finaltext[0]);
+            string str = finaltext[1];
+
+
+            Values.Score = num;
+            Values.TextString = str;
+            
+            return Ok(new { message = "Score enviado com sucesso." });
         }
 
         [HttpGet]
         public IActionResult ShowScore()
         {
-            return Ok(new {score = Values.Score});
+            return Ok(new { score = Values.Score });
         }
     }
 

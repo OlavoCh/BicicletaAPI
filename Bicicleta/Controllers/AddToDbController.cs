@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Bicicleta.Data;
 using MySql.Data.MySqlClient;
 using Mysqlx;
+using System.Diagnostics.Contracts;
 
 namespace Bicicleta.Controllers
 {
@@ -11,21 +12,16 @@ namespace Bicicleta.Controllers
     // Renomeie o controller para AddUser para corresponder à URL no seu JS
     public class AddToDbController : ControllerBase
     {
-        private readonly string connectionString = "server=localhost;database=bicicleta;user=root;password=''";
+        private readonly string connectionString = "Server=localhost;Database=bicicleta;User=root;Password=12345678;";
 
-        // Modelo para receber os dados do frontend
-        public class AddToDbModel
-        {
+        public class DataMode{
             public string? Name { get; set; }
-            public int Score { get; set; } // Adicione a propriedade Score
+            public int Score { get; set; }
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] AddToDbModel data)
+        public IActionResult Post([FromBody] DataMode data)
         {
-            // Remova a dependência da variável estática 'Values'
-            // //Values.Name = Data.Name;
-
             try
             {
                 using var connection = new MySqlConnection(connectionString);
