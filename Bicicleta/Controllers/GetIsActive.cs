@@ -18,9 +18,10 @@ namespace Bicicleta.Controllers
             {
                 return Ok(new { isActive = Values.TextString });
             }
-            else if (Values.TextString == "d"){
+            else if (Values.TextString == "d")
+            {
                 return Ok(new { isActive = Values.TextString });
-             }
+            }
             else
             {
                 return BadRequest(new { Error = "erro" });

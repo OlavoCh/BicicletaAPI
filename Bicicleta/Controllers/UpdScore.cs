@@ -28,7 +28,7 @@ namespace Bicicleta.Controllers
         {
             try
             {
-                
+
                 using var connection = new MySqlConnection(connectionString);
                 connection.Open();
 
@@ -43,13 +43,17 @@ namespace Bicicleta.Controllers
                 {
                     return NotFound(new { message = "Usuário não encontrado." });
                 }
-
+                Values.Score = 0;
+                Values.TextString = null;
                 return Ok(new { message = "Score atualizado com sucesso." });
             }
             catch (Exception ex)
             {
                 return StatusCode(500, new { message = "Erro ao atualizar o score.", error = ex.Message });
             }
+
+            
+            
         }
     }
 }

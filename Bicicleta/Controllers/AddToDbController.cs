@@ -34,6 +34,9 @@ namespace Bicicleta.Controllers
                 // Use o score recebido no corpo da requisição
                 cmd.Parameters.AddWithValue("@score", data.Score);
                 cmd.ExecuteNonQuery();
+                Values.Score = 0;
+                Values.TextString = null;
+
 
                 // Não precisa fechar a conexão aqui, o 'using' já faz isso.
                 return Ok(new { message = "Score inserido com sucesso!" });
